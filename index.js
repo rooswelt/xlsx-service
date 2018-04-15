@@ -21,12 +21,7 @@ app.get("/generateExcel", function(req, res) {
   req.body = req.body || {};
   var name = req.params.fileName || "excel.xlsx";
   var sheetName = req.params.sheetName || "Prosit-Italia";
-  const data = [
-    [1, 2, 3],
-    [true, false, null, "sheetjs"],
-    ["foo", "bar", new Date("2014-02-19T14:30Z"), "0.3"],
-    ["baz", null, "qux"]
-  ];
+  const data = req.params.data;
   const buffer = generatorController.generateExcel(sheetName, data);
   res.attachment(name);
   res.end(buffer, "binary");
