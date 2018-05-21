@@ -4,10 +4,6 @@ FROM node:8.11.1-alpine
 ENV NODE_DIR /var/www
 WORKDIR $NODE_DIR
 
-# .npm-deps https://github.com/Automattic/node-canvas/issues/866
-RUN apk add --no-cache --virtual .build-deps git build-base g++ \
-    && apk add --no-cache --virtual .npm-deps cairo-dev libjpeg-turbo-dev pango
-
 # cache npm
 COPY package.json /tmp/
 RUN cd /tmp \

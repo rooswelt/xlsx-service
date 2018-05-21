@@ -1,0 +1,1 @@
+Docker container for node-xlsx/sheetjs http://sheetjs.com/opensource project
