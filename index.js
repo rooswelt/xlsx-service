@@ -6,14 +6,14 @@ const generatorController = require("./controller/generator");
 const port = process.env.PORT || 3000;
 
 var app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '200mb' }));
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.status(200).send("Excel service");
   res.end("Nothing to look here, except that express works!");
 });
 
-app.post("/generateExcel", function(req, res) {
+app.post("/generateExcel", function (req, res) {
   console.log("Body", req.body);
   req.body = req.body || {};
   var name = req.body.fileName || "result.xlsx";
